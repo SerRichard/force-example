@@ -1,0 +1,101 @@
+++PARAM_LEVEL2_START++
+
+# INPUT/OUTPUT DIRECTORIES
+# ------------------------------------------------------------------------
+FILE_QUEUE = 
+DIR_LEVEL2 = 
+DIR_LOG = 
+DIR_TEMP = 
+
+# DIGITAL ELEVATION MODEL
+# ------------------------------------------------------------------------
+FILE_DEM = 
+DEM_NODATA = -9999
+
+# DATA CUBES
+# ------------------------------------------------------------------------
+DO_REPROJ = TRUE
+DO_TILE = TRUE
+FILE_TILE = NULL
+# The predefined PROJECTION options (EQUI7, EQUI7-EU, GLANCE7) have their own settings for ORIGIN_LAT, ORIGIN_LON, TILE_SIZE, and BLOCK_SIZE, thus the values given in the parameterfile will be ignored.
+TILE_SIZE = 300000
+BLOCK_SIZE = 3000
+RESOLUTION_LANDSAT = 30
+RESOLUTION_SENTINEL2 = 10
+ORIGIN_LON = -70.923153
+ORIGIN_LAT = 41.064670
+#PROJECTION = PROJCS["Azimuthal_Equidistant",GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Azimuthal_Equidistant"],PARAMETER["false_easting",5837287.81977],PARAMETER["false_northing",2121415.69617],PARAMETER["longitude_of_center",24.0],PARAMETER["latitude_of_center",53.0],UNIT["Meter",1.0]]
+PROJECTION = EQUI7-EU
+RESAMPLING = CC
+
+# RADIOMETRIC CORRECTION OPTIONS
+# ------------------------------------------------------------------------
+DO_ATMO = TRUE
+DO_TOPO = TRUE
+DO_BRDF = TRUE
+ADJACENCY_EFFECT = TRUE
+MULTI_SCATTERING = TRUE
+
+# WATER VAPOR CORRECTION OPTIONS
+# ------------------------------------------------------------------------
+DIR_WVPLUT = 
+WATER_VAPOR = NULL
+
+# AEROSOL OPTICAL DEPTH OPTIONS
+# ------------------------------------------------------------------------
+DO_AOD  = TRUE
+DIR_AOD  = NULL
+
+# CLOUD DETECTION OPTIONS
+# ------------------------------------------------------------------------
+ERASE_CLOUDS = TRUE
+MAX_CLOUD_COVER_FRAME = 90
+MAX_CLOUD_COVER_TILE  = 90
+CLOUD_BUFFER  = 300
+SHADOW_BUFFER = 90
+SNOW_BUFFER   = 30
+CLOUD_THRESHOLD  = 0.225
+SHADOW_THRESHOLD = 0.02
+
+# RESOLUTION MERGING (data fusion to create 10m bands)
+# ------------------------------------------------------------------------
+RES_MERGE = IMPROPHE
+# RES_MERGE = REGRESSION # better result but take ~2 hours per tile
+# RES_MERGE = NONE # nearest neighbour
+
+# CO-REGISTRATION OPTIONS
+# ------------------------------------------------------------------------
+DIR_COREG_BASE = NULL
+COREG_BASE_NODATA = -9999
+
+# MISCELLANEOUS OPTIONS
+# ------------------------------------------------------------------------
+IMPULSE_NOISE = TRUE
+BUFFER_NODATA = FALSE
+
+# TIER LEVEL
+# ------------------------------------------------------------------------
+TIER = 1
+
+# PARALLEL PROCESSING
+# ------------------------------------------------------------------------
+# Multiprocessing options (NPROC, DELAY) only apply when using the batch
+# utility force-level2. They are not used by the core function force-l2ps.
+# ------------------------------------------------------------------------
+NPROC = 8
+NTHREAD = 2
+PARALLEL_READS = TRUE
+DELAY = 60
+TIMEOUT_ZIP = 30
+
+# OUTPUT OPTIONS
+# ------------------------------------------------------------------------
+OUTPUT_FORMAT = GTiff
+OUTPUT_DST = TRUE
+OUTPUT_AOD = TRUE
+OUTPUT_WVP = TRUE
+OUTPUT_VZN = TRUE
+OUTPUT_HOT = TRUE
+OUTPUT_OVV = TRUE
+
+++PARAM_LEVEL2_END++
